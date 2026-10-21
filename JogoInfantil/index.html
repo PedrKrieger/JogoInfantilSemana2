@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7352d6">
+  <meta name="description" content="Uma aventura de descobertas para crianças de 5 a 6 anos. Animais, cores, letras e números para aprender brincando!">
+  <title>Clube das Descobertas • Aprender é uma aventura!</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app-shell" id="app">
+    <header class="brand-header">
+      <a class="brand" href="index.html" aria-label="Clube das Descobertas, início"><span class="brand-mark" aria-hidden="true">✦</span><span>clube das<br><strong>descobertas</strong></span></a>
+      <span class="age-label">FEITO PARA PEQUENOS CURIOSOS <b>5–6 anos</b></span>
+    </header>
+    <section class="screen screen--active lobby-screen" id="screen-lobby" aria-labelledby="lobby-title">
+      <div class="sky-shapes" aria-hidden="true">
+        <span class="shape shape--sun"></span>
+        <span class="shape shape--cloud shape--cloud-one"></span>
+        <span class="shape shape--cloud shape--cloud-two"></span>
+        <span class="shape shape--star shape--star-one">★</span>
+        <span class="shape shape--star shape--star-two">★</span>
+      </div>
+
+      <div class="home-card">
+        <div class="home-intro">
+          <p class="kicker"><span class="little-dot"></span> UM MUNDO PARA DESCOBRIR</p>
+          <h1 id="lobby-title" tabindex="-1">Aprender é uma<br><span>grande aventura!</span><i aria-hidden="true">✦</i></h1>
+          <p class="hero-text">Olhe, imagine e descubra! Vamos brincar com animais, cores, letras e números?</p>
+
+          <div class="hero-badges" aria-label="Temas do jogo">
+            <span>🐾 Animais</span>
+            <span>🎨 Cores</span>
+            <span>🔤 Letras</span>
+            <span>🔢 Números</span>
+          </div>
+
+          <div class="home-difficulty">
+            <h2><span class="step-label">1</span> Escolha sua aventura</h2>
+            <p class="section-hint">Do seu jeitinho, no seu tempo.</p>
+            <div class="difficulty-grid difficulty-grid--home" aria-label="Opções de dificuldade">
+              <button class="difficulty-card difficulty-card--easy" data-difficulty="facil" type="button">
+                <span class="difficulty-icon">🌱</span>
+                <strong>Fácil</strong>
+                <small>2 opções para descobrir</small>
+                <span class="level-dots" aria-hidden="true">● ○ ○</span><span class="card-arrow" aria-hidden="true">↗</span>
+              </button>
+
+              <button class="difficulty-card difficulty-card--medium" data-difficulty="medio" type="button">
+                <span class="difficulty-icon">🌻</span>
+                <strong>Médio</strong>
+                <small>3 opções para pensar</small>
+                <span class="level-dots" aria-hidden="true">● ● ○</span><span class="card-arrow" aria-hidden="true">↗</span>
+              </button>
+
+              <button class="difficulty-card difficulty-card--hard" data-difficulty="dificil" type="button">
+                <span class="difficulty-icon">🚀</span>
+                <strong>Difícil</strong>
+                <small>4 opções para explorar</small>
+                <span class="level-dots" aria-hidden="true">● ● ●</span><span class="card-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+            <p class="play-note">♡ Sem pressa e sem perder vidas. Cada descoberta vale a pena!</p>
+          </div>
+        </div>
+
+        <aside class="home-character" aria-label="Personagem atual">
+          <div class="character-scene" aria-hidden="true"><span class="scene-rainbow"></span><span class="scene-cloud cloud-one"></span><span class="scene-cloud cloud-two"></span><span class="scene-spark">✦</span><span class="floating-sticker sticker-abc">Aa</span><span class="floating-sticker sticker-numbers">1 2 3</span><span class="scene-flower">✿</span></div>
+          <div class="character-card">
+            <span class="speech-bubble">Vamos descobrir juntos? ✨</span>
+            <div id="avatar-preview-lobby" class="avatar-preview avatar-preview--home"></div>
+            <p class="preview-label">SEU COMPANHEIRO DE AVENTURA</p>
+            <p class="preview-name" id="preview-name">Amiguinho</p>
+            <button class="button button--secondary button--wide" id="customize-open-button" type="button">
+              ✎ Criar meu personagem
+            </button>
+          </div>
+        </aside>
+      </div>
+      <footer class="lobby-footer"><span>✦ 20 descobertas em cada aventura</span><span>Curricularização da Extensão • 2026</span></footer>
+    </section>
+
+    <div class="modal-overlay" id="customize-modal" aria-hidden="true">
+      <section class="customize-modal" role="dialog" aria-modal="true" aria-labelledby="customize-title">
+        <header class="modal-header">
+          <div>
+            <p class="kicker">Seu personagem</p>
+            <h2 id="customize-title">Personalize seu personagem</h2>
+          </div>
+          <button class="icon-button" id="customize-close-x" type="button" aria-label="Fechar personalização">×</button>
+        </header>
+
+        <div class="modal-body">
+          <div class="modal-preview" aria-label="Prévia do personagem">
+            <div id="avatar-preview-large" class="avatar-preview avatar-preview--modal"></div>
+            <p class="preview-name preview-name--modal" id="modal-preview-name">Amiguinho</p>
+          </div>
+
+          <form class="customize-form" id="avatar-form">
+            <label class="field field--name">
+              <span>Nome do personagem</span>
+              <input id="character-name" type="text" maxlength="18" placeholder="Digite um nome">
+            </label>
+
+            <div class="modal-options-grid">
+              <div class="control-group">
+                <p>Cor da pele</p>
+                <div class="choice-row" id="skin-options"></div>
+              </div>
+
+              <div class="control-group">
+                <p>Cor dos olhos</p>
+                <div class="choice-row" id="eye-options"></div>
+              </div>
+
+              <div class="control-group control-group--hair">
+                <p>Modelo de cabelo</p>
+                <div class="choice-grid" id="hair-style-options"></div>
+              </div>
+
+              <div class="control-group">
+                <p>Cor do cabelo</p>
+                <div class="choice-row" id="hair-color-options"></div>
+              </div>
+
+              <div class="control-group control-group--outfit">
+                <p>Roupa completa</p>
+                <div class="choice-grid choice-grid--outfits" id="outfit-options"></div>
+              </div>
+            </div>
+
+            <button class="button button--primary button--wide" id="customize-done-button" type="button">
+              Concluir
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <section class="screen quiz-screen" id="screen-quiz" aria-labelledby="quiz-question">
+      <header class="quiz-topbar">
+        <button class="icon-button" id="quiz-home-button" type="button" aria-label="Voltar ao início">⌂</button>
+        <div class="mini-profile">
+          <div id="avatar-preview-quiz" class="avatar-preview avatar-preview--tiny"></div>
+          <div>
+            <p id="quiz-player-name">Amiguinho</p>
+            <strong id="quiz-difficulty-name">Modo Fácil</strong>
+          </div>
+        </div>
+
+        <div class="quiz-stats" aria-label="Informações da partida">
+          <span id="question-counter">Pergunta 1 de 20</span>
+          <span id="score-counter">⭐ 0 estrelas</span>
+        </div>
+      </header>
+      <div class="journey-track" id="journey-track" role="progressbar" aria-label="Perguntas respondidas" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0"><div id="journey-fill"></div></div>
+
+      <article class="quiz-card">
+        <div class="question-image-box">
+          <span class="image-label">👀 Olhe com atenção</span>
+          <img id="question-image" alt="Imagem da pergunta atual">
+          <div class="image-fallback" id="image-fallback" aria-hidden="true">
+            <span>🖼️</span>
+            <strong>Vamos olhar a imagem!</strong>
+            <small id="image-status">Carregando a próxima descoberta…</small>
+          </div>
+        </div>
+
+        <div class="question-content">
+          <div class="question-tools"><span class="topic-tag" id="question-topic">Descobertas</span><button class="listen-button" id="listen-button" type="button">♫ Ouvir pergunta</button></div>
+          <h2 id="quiz-question" tabindex="-1">Pergunta do quiz</h2>
+          <p class="answer-hint">Toque na resposta que você escolheu.</p>
+          <div class="answers-area">
+            <div class="answers-grid" id="answers-grid"></div>
+            <div class="feedback-box" id="feedback-box" role="status" aria-live="polite" hidden></div>
+          </div>
+
+          <button class="button button--primary button--wide" id="next-question-button" type="button" disabled>
+            Próxima descoberta →
+          </button>
+        </div>
+      </article>
+    </section>
+
+    <section class="screen result-screen" id="screen-result" aria-labelledby="result-title">
+      <div class="result-card">
+        <div class="result-panel result-panel--avatar">
+          <div class="result-avatar-wrap">
+            <div id="avatar-preview-result" class="avatar-preview avatar-preview--result"></div>
+            <span class="result-seal" id="result-seal">🌈</span>
+          </div>
+          <p class="result-name" id="result-player-name">Amiguinho</p>
+        </div>
+
+        <div class="result-panel result-panel--content">
+          <p class="kicker">AVENTURA COMPLETA!</p>
+          <h2 id="result-title" tabindex="-1">Quanta coisa você descobriu! 🌈</h2>
+          <div class="result-stars" aria-hidden="true">★ ★ ★</div>
+
+          <div class="result-score-card">
+            <p class="result-score" id="result-score">Você acertou 0 de 20 perguntas</p>
+            <p class="result-points" id="result-points">Pontuação final: 0</p>
+          </div>
+
+          <p class="result-message" id="result-message">Sua aventura terminou com muitos aprendizados!</p>
+
+          <div class="result-actions">
+            <button class="button button--primary" id="play-again-button" type="button">Jogar novamente</button>
+            <button class="button button--secondary" id="back-home-button" type="button">Voltar ao início</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script src="js/questions.js"></script>
+  <script src="js/avatar.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
